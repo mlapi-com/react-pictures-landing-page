@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 
 function App() {
-	const [file, setFile] = useState();
+	const [image, setImage] = useState();
 	function handleChange(e) {
 		console.log(e.target.files);
-		setFile(URL.createObjectURL(e.target.files[0]));
+		setImage(URL.createObjectURL(e.target.files[0]));
 	}
 
 	return (
@@ -28,8 +28,8 @@ function App() {
             </label>
         </main>
 
-        <div className="flex items-center justify-center mt-10 max-w-2xl">
-			<img src={file} />
+        <div className="flex items-center justify-center mt-10 max-w-2xl shadow-lg dark:shadow-black/30">
+			<img src={image} />
 
         </div>
 
