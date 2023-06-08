@@ -7,6 +7,7 @@ function App() {
   const [showDialog, setShowDialog] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [preferencesSubmitted, setPreferencesSubmitted] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   function handleChange(e) {
     console.log(e.target.files);
@@ -23,14 +24,26 @@ function App() {
   }
 
   function handleSubmitPreferences() {
+    if (selectedOptions.length === 0) {
+      setShowPopup(true);
+      return;
+    }
+
+    if (selectedOptions.includes('None')) {
+      setShowPopup(false);
+      return;
+    }
+
     console.log('Selected options:', selectedOptions);
     setPreferencesSubmitted(true);
+    setShowPopup(false);
   }
 
   function handleCloseDialog() {
     setShowDialog(false);
     setSelectedOptions([]);
     setPreferencesSubmitted(false);
+    setShowPopup(false);
   }
 
   useEffect(() => {
@@ -175,6 +188,23 @@ function App() {
           </div>
         </div>
       ) : null}
+
+      {showPopup && (
+        <div className="fixed inset-0 flex items-center justify-center z-20">
+          <div className="absolute inset-0 bg-black opacity-75"></div>
+          <div className="fixed bg-white rounded-lg p-4 shadow-lg">
+            <p className="text-center text-red-500 font-medium">Please select at least one option.</p>
+            <div className="flex justify-center mt-4">
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                onClick={() => setShowPopup(false)}
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
