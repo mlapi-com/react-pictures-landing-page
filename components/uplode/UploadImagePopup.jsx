@@ -116,6 +116,9 @@ function App() {
             <div className="flex flex-1">
               <img src={image} alt="Uploaded" className="w-4/5 h-auto mx-auto" />
             </div>
+            <p className="text-center text-slate-950 my-4">
+              Select one or multiple options
+            </p>
             {!preferencesSubmitted && (
               <div className="flex flex-wrap justify-between p-4">
                 <div className="flex items-center mr-2 mb-2">
