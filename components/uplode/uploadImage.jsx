@@ -27,7 +27,11 @@ function App() {
                 <img id="pic" />
             </label>
         </main>
+
+        <div className="flex items-center justify-center mt-10 max-w-2xl">
 			<img src={file} />
+
+        </div>
 
 		</div>
 
