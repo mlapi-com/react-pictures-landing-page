@@ -104,7 +104,7 @@ function App() {
       {showDialog ? (
         <div className="fixed inset-0 flex items-center justify-center z-10">
           <div className="fixed inset-0 bg-black opacity-75"></div>
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-max bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="flex items-center justify-end p-2">
               <button
                 className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-2 py-1 rounded"
