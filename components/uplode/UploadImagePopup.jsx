@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
   const [image, setImage] = useState();
@@ -20,6 +20,20 @@ function App() {
   function handleCloseDialog() {
     setShowDialog(false);
   }
+
+  useEffect(() => {
+    function handleKeyPress(event) {
+      if (event.key === 'Escape') {
+        handleCloseDialog();
+      }
+    }
+
+    document.addEventListener('keydown', handleKeyPress);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []);
 
   return (
     <div>
