@@ -91,7 +91,7 @@ function App() {
       {showDialog ? (
         <div className="fixed inset-0 flex items-center justify-center z-10">
           <div className="fixed inset-0 bg-black opacity-75"></div>
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-2xl bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-6xl bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="flex items-center justify-end p-2">
               <button
                 className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-2 py-1 rounded"
@@ -117,41 +117,29 @@ function App() {
               <img src={image} alt="Uploaded" className="w-4/5 h-auto mx-auto" />
             </div>
             {!preferencesSubmitted && (
-              <div className="flex flex-wrap justify-between p-2">
+              <div className="flex flex-wrap justify-between p-4">
                 <div className="flex items-center mr-2 mb-2">
                   <input
                     type="checkbox"
-                    id="option1"
-                    value="Option 1"
-                    checked={selectedOptions.includes('Option 1')}
-                    onChange={() => handleOptionSelect('Option 1')}
+                    id="backgroundRemoval"
+                    value="Image Background Removal"
+                    checked={selectedOptions.includes('Image Background Removal')}
+                    onChange={() => handleOptionSelect('Image Background Removal')}
                   />
-                  <label htmlFor="option1" className="ml-2 text-slate-950">
-                    Option 1
+                  <label htmlFor="backgroundRemoval" className="ml-2 text-slate-950">
+                    Image Background Removal
                   </label>
                 </div>
                 <div className="flex items-center mr-2 mb-2">
                   <input
                     type="checkbox"
-                    id="option2"
-                    value="Option 2"
-                    checked={selectedOptions.includes('Option 2')}
-                    onChange={() => handleOptionSelect('Option 2')}
+                    id="imageEnhancement"
+                    value="Image Enhancement"
+                    checked={selectedOptions.includes('Image Enhancement')}
+                    onChange={() => handleOptionSelect('Image Enhancement')}
                   />
-                  <label htmlFor="option2" className="ml-2 text-slate-950">
-                    Option 2
-                  </label>
-                </div>
-                <div className="flex items-center mr-2 mb-2">
-                  <input
-                    type="checkbox"
-                    id="option3"
-                    value="Option 3"
-                    checked={selectedOptions.includes('Option 3')}
-                    onChange={() => handleOptionSelect('Option 3')}
-                  />
-                  <label htmlFor="option3" className="ml-2 text-slate-950">
-                    Option 3
+                  <label htmlFor="imageEnhancement" className="ml-2 text-slate-950">
+                    Image Enhancement
                   </label>
                 </div>
               </div>
