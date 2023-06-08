@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 function App() {
   const [image, setImage] = useState();
   const [showDialog, setShowDialog] = useState(false);
+  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [preferencesSubmitted, setPreferencesSubmitted] = useState(false);
 
   function handleChange(e) {
     console.log(e.target.files);
@@ -12,13 +14,23 @@ function App() {
     setShowDialog(true);
   }
 
-  function handleButtonClick(choice) {
-    console.log('Choice selected:', choice);
-    // You can perform any further actions based on the choice selected
+  function handleOptionSelect(option) {
+    if (selectedOptions.includes(option)) {
+      setSelectedOptions(selectedOptions.filter((item) => item !== option));
+    } else {
+      setSelectedOptions([...selectedOptions, option]);
+    }
+  }
+
+  function handleSubmitPreferences() {
+    console.log('Selected options:', selectedOptions);
+    setPreferencesSubmitted(true);
   }
 
   function handleCloseDialog() {
     setShowDialog(false);
+    setSelectedOptions([]);
+    setPreferencesSubmitted(false);
   }
 
   useEffect(() => {
@@ -34,6 +46,7 @@ function App() {
       document.removeEventListener('keydown', handleKeyPress);
     };
   }, []);
+
 
   return (
     <div>
@@ -103,34 +116,69 @@ function App() {
             <div className="flex flex-1">
               <img src={image} alt="Uploaded" className="w-4/5 h-auto mx-auto" />
             </div>
-            <div className="flex items-center justify-center p-2">
-              <button
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
-                onClick={() => handleButtonClick('Option 1')}
-              >
-                Option 1
-              </button>
-              <button
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
-                onClick={() => handleButtonClick('Option 2')}
-              >
-                Option 2
-              </button>
-              <button
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-                onClick={() => handleButtonClick('Option 3')}
-              >
-                Option 3
-              </button>
-            </div>
+            {!preferencesSubmitted && (
+              <div className="flex flex-wrap justify-between p-2">
+                <div className="flex items-center mr-2 mb-2">
+                  <input
+                    type="checkbox"
+                    id="option1"
+                    value="Option 1"
+                    checked={selectedOptions.includes('Option 1')}
+                    onChange={() => handleOptionSelect('Option 1')}
+                  />
+                  <label htmlFor="option1" className="ml-2 text-slate-950">
+                    Option 1
+                  </label>
+                </div>
+                <div className="flex items-center mr-2 mb-2">
+                  <input
+                    type="checkbox"
+                    id="option2"
+                    value="Option 2"
+                    checked={selectedOptions.includes('Option 2')}
+                    onChange={() => handleOptionSelect('Option 2')}
+                  />
+                  <label htmlFor="option2" className="ml-2 text-slate-950">
+                    Option 2
+                  </label>
+                </div>
+                <div className="flex items-center mr-2 mb-2">
+                  <input
+                    type="checkbox"
+                    id="option3"
+                    value="Option 3"
+                    checked={selectedOptions.includes('Option 3')}
+                    onChange={() => handleOptionSelect('Option 3')}
+                  />
+                  <label htmlFor="option3" className="ml-2 text-slate-950">
+                    Option 3
+                  </label>
+                </div>
+              </div>
+            )}
             <div className="flex justify-end p-2">
+              {!preferencesSubmitted && (
+                <button
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
+                  onClick={handleSubmitPreferences}
+                >
+                  Submit
+                </button>
+              )}
               <button
                 className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded"
                 onClick={handleCloseDialog}
               >
-                Cancel
+                Close
               </button>
             </div>
+            {preferencesSubmitted && (
+              <div className="p-4">
+                <p className="text-center text-lg font-medium text-slate-950">
+                  Preferences submitted: {selectedOptions.join(', ')}
+                </p>
+              </div>
+            )}
           </div>
         </div>
       ) : null}
