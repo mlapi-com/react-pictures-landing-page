@@ -116,11 +116,11 @@ function App() {
             <div className="flex flex-1">
               <img src={image} alt="Uploaded" className="w-4/5 h-auto mx-auto" />
             </div>
-            <p className="text-center text-slate-950 my-4">
+            <p className="text-center text-slate-950 my-4 text-lg">
               Select one or multiple options
             </p>
             {!preferencesSubmitted && (
-              <div className="flex flex-wrap justify-between p-4">
+              <div className="flex flex-wrap justify-around	 p-4">
                 <div className="flex items-center mr-2 mb-2">
                   <input
                     type="checkbox"
@@ -128,8 +128,9 @@ function App() {
                     value="Image Background Removal"
                     checked={selectedOptions.includes('Image Background Removal')}
                     onChange={() => handleOptionSelect('Image Background Removal')}
+                    class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-700 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />
-                  <label htmlFor="backgroundRemoval" className="ml-2 text-slate-950">
+                  <label htmlFor="backgroundRemoval" className="ml-2 text-slate-950 text-xl font-semibold">
                     Image Background Removal
                   </label>
                 </div>
@@ -140,8 +141,9 @@ function App() {
                     value="Image Enhancement"
                     checked={selectedOptions.includes('Image Enhancement')}
                     onChange={() => handleOptionSelect('Image Enhancement')}
+                    class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-700 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
                   />
-                  <label htmlFor="imageEnhancement" className="ml-2 text-slate-950">
+                  <label htmlFor="imageEnhancement" className="ml-2 text-slate-950 text-xl font-semibold">
                     Image Enhancement
                   </label>
                 </div>
