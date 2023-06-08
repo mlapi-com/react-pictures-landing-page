@@ -89,7 +89,7 @@ function App() {
             <div className="flex flex-1">
               <img src={image} alt="Uploaded" className="w-4/5 h-auto mx-auto" />
             </div>
-            <div className="flex justify-end p-2">
+            <div className="flex items-center justify-center p-2">
               <button
                 className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
                 onClick={() => handleButtonClick('Option 1')}
