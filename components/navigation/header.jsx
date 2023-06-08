@@ -11,6 +11,7 @@ export default function Header(){
         }
     return (
 
+        <div className="w-full">
         <div class="w-full mx-auto md:px-12 px-8 max-w-7xl lg:px-16">
             <div
             x-data="{ open: false }"
@@ -73,9 +74,14 @@ export default function Header(){
                     </a>
                 </div>
             </nav>
-
+            
 
             </div>
+            
+        </div>
+        <div>
+            <hr class="w-full h-0.5 border-t-0 bg-slate-50 opacity-200 dark:opacity-200" />
+        </div>
         </div>
 
 
