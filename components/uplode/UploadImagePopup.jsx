@@ -8,6 +8,7 @@ function App() {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [preferencesSubmitted, setPreferencesSubmitted] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [dialogHeight, setDialogHeight] = useState(0);
 
   function handleChange(e) {
     console.log(e.target.files);
@@ -60,6 +61,24 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    function updateDialogHeight() {
+      const dialogElement = document.getElementById('dialog');
+      if (dialogElement) {
+        const { height } = dialogElement.getBoundingClientRect();
+        setDialogHeight(height);
+      }
+    }
+
+    window.addEventListener('resize', updateDialogHeight);
+    updateDialogHeight();
+
+    return () => {
+      window.removeEventListener('resize', updateDialogHeight);
+    };
+  }, []);
+
+  const shouldReduceSize = dialogHeight > window.innerHeight;
 
   return (
     <div>
@@ -104,7 +123,9 @@ function App() {
       {showDialog ? (
         <div className="fixed inset-0 flex items-center justify-center z-10">
           <div className="fixed inset-0 bg-black opacity-75"></div>
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-max bg-white shadow-lg rounded-lg overflow-hidden">
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-max bg-white shadow-lg rounded-lg overflow-hidden ${
+              shouldReduceSize ? 'h-screen-3/4' : ''
+            }`}">
             <div className="flex items-center justify-end p-2">
               <button
                 className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-2 py-1 rounded"
