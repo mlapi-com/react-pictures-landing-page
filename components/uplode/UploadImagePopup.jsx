@@ -49,9 +49,9 @@ function App() {
   return (
     <div>
       <main className="flex items-center justify-center font-sans">
-        <label
+        <div
           htmlFor="dropzone-file"
-          className="mx-auto cursor-pointer flex w-full max-w-2xl flex-col items-center rounded-xl border-2 border-dashed border-blue-400 bg-white p-6 text-center"
+          className="flex flex-col items-center w-full rounded-xl border-2 border-dashed border-blue-400 bg-white p-6 text-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,8 @@ function App() {
             onChange={handleChange}
           />
           <img id="pic" />
-        </label>
+        </div>
+        
       </main>
 
     {/* This Popups a dialog after image is uploded */}

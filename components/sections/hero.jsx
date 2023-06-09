@@ -44,10 +44,11 @@ export default function Hero(){
 
 
 
-        <p
-          class="text-black font-extrabold lg:text-5xl text-4xl tracking-tight lg:mt-4 mb:mt-4 mt-4">
+        <h1
+          class="text-black animate-fade-up bg-gradient-to-br lg:text-5xl bg-clip-text font-display text-4xl font-bold tracking-tight lg:mt-4 mb:mt-4 mt-4">
           AI Powered Image Processing Tools
-        </p>
+        </h1>
+
         <p class="text-slate-500 lg:text-xl max-w-2xl mt-4 mx-auto text-base">
           PicWish is a AI powered image enhancement, object removal, image background removal tool.
         </p>
