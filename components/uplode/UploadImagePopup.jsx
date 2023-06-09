@@ -49,9 +49,9 @@ function App() {
   return (
     <div>
       <main className="flex items-center justify-center font-sans">
-        <label
+        <div
           htmlFor="dropzone-file"
-          className="mx-auto cursor-pointer flex w-full max-w-2xl flex-col items-center rounded-xl border-2 border-dashed border-blue-400 bg-white p-6 text-center"
+          className="flex flex-col items-center w-full rounded-xl border-2 border-dashed border-blue-400 bg-white p-6 text-center"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,8 @@ function App() {
             onChange={handleChange}
           />
           <img id="pic" />
-        </label>
+        </div>
+        
       </main>
 
     {/* This Popups a dialog after image is uploded */}
@@ -120,23 +121,17 @@ function App() {
             {setSelectedChoiceState && (<div className="flex justify-center p-6">
               <button
                 className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
-                onClick={() => handleButtonClick('image background removal')}
+                onClick={() => handleButtonClick('Image Background Removal')}
               >
                 Image Background Removal
               </button>
               <button
                 className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-                onClick={() => handleButtonClick('image enhancement')}
+                onClick={() => handleButtonClick('Image Enhancement')}
               >
                 Image Enhancement
               </button>
             </div>)}
-
-            {/* {selectedChoice && selectedChoiceState && (
-            <div className="flex justify-center p-6 text-slate-950">
-              <h3 className="text-xl font-medium">Selected Choice: {selectedChoice}</h3>
-            </div>
-            )} */}
 
             <div className="flex justify-end p-2">
               <button
@@ -152,8 +147,8 @@ function App() {
 
     {/* Display the selected choice after the dialog is closed */}
       {!showDialog && selectedChoiceState && selectedChoice && (
-        <div className="flex justify-center p-6 text-slate-950">
-          <h3 className="text-xl font-medium">Selected Choice: {selectedChoice}</h3>
+        <div className="flex items-center justify-center p-6 text-slate-950">
+          <h3 className="text-xl font-medium">{selectedChoice} Started</h3>
         </div>
       )}
 
