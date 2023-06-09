@@ -15,7 +15,7 @@ export default function Header(){
         <div class="w-full mx-auto md:px-12 px-8 max-w-7xl lg:px-16">
             <div
             x-data="{ open: false }"
-            class="relative flex flex-col w-full py-5 mx-auto bg-white md:items-center md:justify-between md:flex-row md:px-6">
+            class="relative flex flex-col w-full pt-2 mx-auto bg-white md:items-center md:justify-between md:flex-row md:px-6">
             <div class="flex flex-row items-center justify-between lg:justify-start">
                 <a href="/" class="lg:pr-8 text-black inline-flex items-center gap-3">
                 

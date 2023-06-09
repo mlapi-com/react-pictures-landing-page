@@ -1,6 +1,6 @@
 export default function Hero(){
     return (
-    <div class="mx-auto w-full lg:px-24 max-w-7xl md:px-12 items-center px-8 py-24">
+    <div class="mx-auto w-full lg:px-24 max-w-7xl md:px-12 items-center px-8 lg:py-24 md:py-12 py-12 ">
     <div>
       <div class="text-center max-w-4xl mx-auto">
         <div class="sm:mb-4 sm:flex sm:justify-center">
