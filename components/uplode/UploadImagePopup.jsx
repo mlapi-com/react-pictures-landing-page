@@ -5,10 +5,6 @@ import React, { useState, useEffect } from 'react';
 function App() {
   const [image, setImage] = useState();
   const [showDialog, setShowDialog] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState([]);
-  const [preferencesSubmitted, setPreferencesSubmitted] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-  const [dialogHeight, setDialogHeight] = useState(0);
 
   function handleChange(e) {
     console.log(e.target.files);
@@ -16,35 +12,14 @@ function App() {
     setShowDialog(true);
   }
 
-  function handleOptionSelect(option) {
-    if (selectedOptions.includes(option)) {
-      setSelectedOptions(selectedOptions.filter((item) => item !== option));
-    } else {
-      setSelectedOptions([...selectedOptions, option]);
-    }
-  }
-
-  function handleSubmitPreferences() {
-    if (selectedOptions.length === 0) {
-      setShowPopup(true);
-      return;
-    }
-
-    if (selectedOptions.includes('None')) {
-      setShowPopup(false);
-      return;
-    }
-
-    console.log('Selected options:', selectedOptions);
-    setPreferencesSubmitted(true);
-    setShowPopup(false);
+  function handleButtonClick(choice) {
+    console.log('Choice selected:', choice);
+    // You can perform any further actions based on the choice selected
+    setShowDialog(false);
   }
 
   function handleCloseDialog() {
     setShowDialog(false);
-    setSelectedOptions([]);
-    setPreferencesSubmitted(false);
-    setShowPopup(false);
   }
 
   useEffect(() => {
@@ -61,24 +36,6 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    function updateDialogHeight() {
-      const dialogElement = document.getElementById('dialog');
-      if (dialogElement) {
-        const { height } = dialogElement.getBoundingClientRect();
-        setDialogHeight(height);
-      }
-    }
-
-    window.addEventListener('resize', updateDialogHeight);
-    updateDialogHeight();
-
-    return () => {
-      window.removeEventListener('resize', updateDialogHeight);
-    };
-  }, []);
-
-  const shouldReduceSize = dialogHeight > window.innerHeight;
 
   return (
     <div>
@@ -123,9 +80,7 @@ function App() {
       {showDialog ? (
         <div className="fixed inset-0 flex items-center justify-center z-10">
           <div className="fixed inset-0 bg-black opacity-75"></div>
-          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-max bg-white shadow-lg rounded-lg overflow-hidden ${
-              shouldReduceSize ? 'h-screen-3/4' : ''
-            }`}">
+          <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-2xl bg-white shadow-lg rounded-lg overflow-hidden">
             <div className="flex items-center justify-end p-2">
               <button
                 className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-2 py-1 rounded"
@@ -150,82 +105,31 @@ function App() {
             <div className="flex flex-1">
               <img src={image} alt="Uploaded" className="w-4/5 h-auto mx-auto" />
             </div>
-            <p className="text-center text-slate-950 my-4 text-lg">
-              Select one or multiple options
-            </p>
-            {!preferencesSubmitted && (
-              <div className="flex flex-wrap justify-around	 p-4">
-                <div className="flex items-center mr-2 mb-2">
-                  <input
-                    type="checkbox"
-                    id="backgroundRemoval"
-                    value="Image Background Removal"
-                    checked={selectedOptions.includes('Image Background Removal')}
-                    onChange={() => handleOptionSelect('Image Background Removal')}
-                    class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-700 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label htmlFor="backgroundRemoval" className="ml-2 text-slate-950 text-xl font-semibold">
-                    Image Background Removal
-                  </label>
-                </div>
-                <div className="flex items-center mr-2 mb-2">
-                  <input
-                    type="checkbox"
-                    id="imageEnhancement"
-                    value="Image Enhancement"
-                    checked={selectedOptions.includes('Image Enhancement')}
-                    onChange={() => handleOptionSelect('Image Enhancement')}
-                    class="w-6 h-6 text-blue-600 bg-gray-100 border-gray-700 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                  />
-                  <label htmlFor="imageEnhancement" className="ml-2 text-slate-950 text-xl font-semibold">
-                    Image Enhancement
-                  </label>
-                </div>
-              </div>
-            )}
+            <div className="flex justify-center p-6">
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
+                onClick={() => handleButtonClick('image background removal')}
+              >
+                Image Background Removal
+              </button>
+              <button
+                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                onClick={() => handleButtonClick('image enhancement')}
+              >
+                Image Enhancement
+              </button>
+            </div>
             <div className="flex justify-end p-2">
-              {!preferencesSubmitted && (
-                <button
-                  className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
-                  onClick={handleSubmitPreferences}
-                >
-                  Submit
-                </button>
-              )}
               <button
                 className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded"
                 onClick={handleCloseDialog}
               >
-                Close
+                Cancel
               </button>
             </div>
-            {preferencesSubmitted && (
-              <div className="p-4">
-                <p className="text-center text-lg font-medium text-slate-950">
-                  Preferences submitted: {selectedOptions.join(', ')}
-                </p>
-              </div>
-            )}
           </div>
         </div>
       ) : null}
-
-      {showPopup && (
-        <div className="fixed inset-0 flex items-center justify-center z-20">
-          <div className="absolute inset-0 bg-black opacity-75"></div>
-          <div className="fixed bg-white rounded-lg p-4 shadow-lg">
-            <p className="text-center text-red-500 font-medium">Please select at least one option.</p>
-            <div className="flex justify-center mt-4">
-              <button
-                className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-                onClick={() => setShowPopup(false)}
-              >
-                OK
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
