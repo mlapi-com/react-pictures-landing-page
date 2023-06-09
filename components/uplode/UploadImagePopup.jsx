@@ -120,23 +120,17 @@ function App() {
             {setSelectedChoiceState && (<div className="flex justify-center p-6">
               <button
                 className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
-                onClick={() => handleButtonClick('image background removal')}
+                onClick={() => handleButtonClick('Image Background Removal')}
               >
                 Image Background Removal
               </button>
               <button
                 className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
-                onClick={() => handleButtonClick('image enhancement')}
+                onClick={() => handleButtonClick('Image Enhancement')}
               >
                 Image Enhancement
               </button>
             </div>)}
-
-            {/* {selectedChoice && selectedChoiceState && (
-            <div className="flex justify-center p-6 text-slate-950">
-              <h3 className="text-xl font-medium">Selected Choice: {selectedChoice}</h3>
-            </div>
-            )} */}
 
             <div className="flex justify-end p-2">
               <button
@@ -152,8 +146,8 @@ function App() {
 
     {/* Display the selected choice after the dialog is closed */}
       {!showDialog && selectedChoiceState && selectedChoice && (
-        <div className="flex justify-center p-6 text-slate-950">
-          <h3 className="text-xl font-medium">Selected Choice: {selectedChoice}</h3>
+        <div className="flex items-center justify-center p-6 text-slate-950">
+          <h3 className="text-xl font-medium">{selectedChoice} Started</h3>
         </div>
       )}
 
