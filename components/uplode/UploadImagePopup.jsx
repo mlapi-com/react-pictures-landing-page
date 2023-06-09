@@ -5,6 +5,8 @@ import React, { useState, useEffect } from 'react';
 function App() {
   const [image, setImage] = useState();
   const [showDialog, setShowDialog] = useState(false);
+  const [selectedChoice, setSelectedChoice] = useState('');
+  const [selectedChoiceState, setSelectedChoiceState] = useState(false);
 
   function handleChange(e) {
     console.log(e.target.files);
@@ -13,9 +15,11 @@ function App() {
   }
 
   function handleButtonClick(choice) {
-    console.log('Choice selected:', choice);
     // You can perform any further actions based on the choice selected
-    setShowDialog(false);
+    console.log('Choice selected:', choice);
+    setSelectedChoice(choice);
+    setSelectedChoiceState(true);
+    handleCloseDialog();
   }
 
   function handleCloseDialog() {
@@ -35,6 +39,11 @@ function App() {
       document.removeEventListener('keydown', handleKeyPress);
     };
   }, []);
+
+  // useEffect(() => {
+  //   console.log('Choice selected:', selectedChoice);
+  // }, [selectedChoice]);
+
 
 
   return (
@@ -77,6 +86,8 @@ function App() {
         </label>
       </main>
 
+    {/* This Popups a dialog after image is uploded */}
+
       {showDialog ? (
         <div className="fixed inset-0 flex items-center justify-center z-10">
           <div className="fixed inset-0 bg-black opacity-75"></div>
@@ -105,7 +116,8 @@ function App() {
             <div className="flex flex-1">
               <img src={image} alt="Uploaded" className="w-4/5 h-auto mx-auto" />
             </div>
-            <div className="flex justify-center p-6">
+            
+            {setSelectedChoiceState && (<div className="flex justify-center p-6">
               <button
                 className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mr-2"
                 onClick={() => handleButtonClick('image background removal')}
@@ -118,7 +130,14 @@ function App() {
               >
                 Image Enhancement
               </button>
+            </div>)}
+
+            {/* {selectedChoice && selectedChoiceState && (
+            <div className="flex justify-center p-6 text-slate-950">
+              <h3 className="text-xl font-medium">Selected Choice: {selectedChoice}</h3>
             </div>
+            )} */}
+
             <div className="flex justify-end p-2">
               <button
                 className="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded"
@@ -130,6 +149,14 @@ function App() {
           </div>
         </div>
       ) : null}
+
+    {/* Display the selected choice after the dialog is closed */}
+      {!showDialog && selectedChoiceState && selectedChoice && (
+        <div className="flex justify-center p-6 text-slate-950">
+          <h3 className="text-xl font-medium">Selected Choice: {selectedChoice}</h3>
+        </div>
+      )}
+
     </div>
   );
 }
