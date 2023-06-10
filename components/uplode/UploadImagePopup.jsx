@@ -7,6 +7,7 @@ function App() {
   const [showDialog, setShowDialog] = useState(false);
   const [selectedChoice, setSelectedChoice] = useState('');
   const [selectedChoiceState, setSelectedChoiceState] = useState(false);
+  const selectedChoiceRef = useRef(null); // to scroll down to view the image
 
   function handleChange(e) {
     console.log(e.target.files);
@@ -57,6 +58,14 @@ function App() {
     const files = e.dataTransfer.files;
     handleChange({ target: { files: files } });
   };
+
+  // TO smotthly scroll down to the image
+
+  useEffect(() => {
+    if (selectedChoiceState && selectedChoiceRef.current) {
+      selectedChoiceRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [selectedChoiceState]);
 
 
   return (
@@ -165,7 +174,7 @@ function App() {
     {/* Display the selected choice after the dialog is closed */}
       {!showDialog && selectedChoiceState && selectedChoice && (
         
-        <div className='flex items-center justify-center flex-col'>
+        <div className='flex items-center justify-center flex-col' ref={selectedChoiceRef}>
           <hr class="w-3/5 h-0.5 border-t-0 mt-14 bg-slate-400 opacity-200 dark:opacity-200" />
         <div className="mx-auto flex w-3/5 flex-col items-center justify-center p-6 mt-4 text-slate-950 rounded-xl border-2 border-solid border-slate-900 bg-white">
           <h1 className="text-xl font-medium">{selectedChoice}</h1>
