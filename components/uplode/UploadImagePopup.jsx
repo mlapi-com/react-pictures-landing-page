@@ -49,7 +49,7 @@ function App() {
   return (
     <div>
       <main className="flex items-center justify-center font-sans">
-        <div
+        <label
           htmlFor="dropzone-file"
           className="flex flex-col items-center w-full rounded-xl border-2 border-dashed border-blue-400 bg-white p-6 text-center"
         >
@@ -83,7 +83,7 @@ function App() {
             onChange={handleChange}
           />
           <img id="pic" />
-        </div>
+        </label>
         
       </main>
 
