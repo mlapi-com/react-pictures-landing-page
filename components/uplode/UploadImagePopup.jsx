@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function App() {
   const [image, setImage] = useState();
@@ -44,6 +44,19 @@ function App() {
   //   console.log('Choice selected:', selectedChoice);
   // }, [selectedChoice]);
 
+  // TO drag and drop image 
+
+  const dropzoneRef = useRef(null);
+  
+  const handleDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const files = e.dataTransfer.files;
+    handleChange({ target: { files: files } });
+  };
 
 
   return (
@@ -52,6 +65,9 @@ function App() {
         <label
           htmlFor="dropzone-file"
           className="flex flex-col items-center w-full rounded-xl border-2 border-dashed border-blue-400 bg-white p-6 text-center"
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          ref={dropzoneRef}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
