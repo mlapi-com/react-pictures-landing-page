@@ -63,7 +63,13 @@ function App() {
 
   useEffect(() => {
     if (selectedChoiceState && selectedChoiceRef.current) {
-      selectedChoiceRef.current.scrollIntoView({ behavior: 'smooth' });
+      if (window.innerWidth < 768) {
+        setTimeout(() => {
+          selectedChoiceRef.current.scrollIntoView({ behavior: 'smooth' });
+        }, 500); // Adjust the delay as needed
+      } else {
+        selectedChoiceRef.current.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   }, [selectedChoiceState]);
 
