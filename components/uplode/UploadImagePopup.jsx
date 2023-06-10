@@ -64,7 +64,7 @@ function App() {
       <main className="flex items-center justify-center font-sans">
         <label
           htmlFor="dropzone-file"
-          className="flex flex-col items-center w-full rounded-xl border-2 border-dashed border-blue-400 bg-white p-6 text-center"
+          className="flex flex-col items-center rounded-xl border-2 border-dashed border-blue-400 bg-white p-6 text-center"
           onDragOver={handleDragOver}
           onDrop={handleDrop}
           ref={dropzoneRef}
@@ -164,8 +164,14 @@ function App() {
 
     {/* Display the selected choice after the dialog is closed */}
       {!showDialog && selectedChoiceState && selectedChoice && (
-        <div className="flex items-center justify-center p-6 text-slate-950">
-          <h3 className="text-xl font-medium">{selectedChoice} Started</h3>
+        
+        <div className='flex items-center justify-center flex-col'>
+          <hr class="w-3/5 h-0.5 border-t-0 mt-14 bg-slate-400 opacity-200 dark:opacity-200" />
+        <div className="mx-auto flex w-3/5 flex-col items-center justify-center p-6 mt-4 text-slate-950 rounded-xl border-2 border-solid border-slate-900 bg-white">
+          <h1 className="text-xl font-medium">{selectedChoice}</h1>
+          <img src={image} className="w-3/5 h-auto mx-auto mt-10 max-w-full" />
+        </div>
+
         </div>
       )}
 
