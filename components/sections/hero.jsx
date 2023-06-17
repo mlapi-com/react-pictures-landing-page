@@ -1,16 +1,16 @@
 export default function Hero(){
     return (
-    <div class="mx-auto w-full lg:px-24 max-w-7xl md:px-12 items-center px-8 lg:py-24 md:py-12 py-12 ">
+    <div className="mx-auto w-full lg:px-24 max-w-7xl md:px-12 items-center px-8 lg:py-24 md:py-12 py-12 ">
     <div>
-      <div class="text-center max-w-4xl mx-auto">
-        <div class="sm:mb-4 sm:flex sm:justify-center">
+      <div className="text-center max-w-4xl mx-auto">
+        <div className="sm:mb-4 sm:flex sm:justify-center">
           <div
-            class="z-10 w-full max-w-xl px-5 xl:px-0">
+            className="z-10 w-full max-w-xl px-5 xl:px-0">
             {/* <a
               href="https://twitter.com/rahul_jalindar"
-              class="font-semibold text-indigo-600"
-              ><span class="absolute inset-0" aria-hidden="true"></span>
-              <span class="block lg:inline">
+              className="font-semibold text-indigo-600"
+              ><span className="absolute inset-0" aria-hidden="true"></span>
+              <span className="block lg:inline">
                 Follow on Twitter for updates <span aria-hidden="true"
                   >&rarr;</span
                 >
@@ -45,18 +45,18 @@ export default function Hero(){
 
 
         <h1
-          class="text-black animate-fade-up bg-gradient-to-br lg:text-5xl bg-clip-text font-display text-4xl font-bold tracking-tight lg:mt-4 mb:mt-4 mt-4">
+          className="text-black animate-fade-up bg-gradient-to-br lg:text-5xl bg-clip-text font-display text-4xl font-bold tracking-tight lg:mt-4 mb:mt-4 mt-4">
           AI Powered Image Processing Tools
         </h1>
 
-        <p class="text-slate-500 lg:text-xl max-w-2xl mt-4 mx-auto text-base">
+        <p className="text-slate-500 lg:text-xl max-w-2xl mt-4 mx-auto text-base">
           PicWish is a AI powered image enhancement, object removal, image background removal tool.
         </p>
       </div>
-      <div class="flex justify-center gap-3 mt-10 flex-col sm:flex-row">
+      <div className="flex justify-center gap-3 mt-10 flex-col sm:flex-row">
 
         <a
-          class="items-center justify-center font-medium rounded-xl focus-visible:outline-black focus:outline-none inline-flex bg-black border-2 border-black duration-200 focus-visible:ring-black hover:bg-transparent hover:border-black hover:text-black lg:w-auto px-6 py-3 text-center text-white"
+          className="items-center justify-center font-medium rounded-xl focus-visible:outline-black focus:outline-none inline-flex bg-black border-2 border-black duration-200 focus-visible:ring-black hover:bg-transparent hover:border-black hover:text-black lg:w-auto px-6 py-3 text-center text-white"
           href="https://lexingtonthemes.com"
           >Try for Free &nbsp; &rarr;
         </a>

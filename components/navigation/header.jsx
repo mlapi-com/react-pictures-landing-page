@@ -12,14 +12,14 @@ export default function Header(){
     return (
 
         <div className="w-full">
-        <div class="w-full mx-auto md:px-12 px-8 max-w-7xl lg:px-16">
+        <div className="w-full mx-auto md:px-12 px-8 max-w-7xl lg:px-16">
             <div
             x-data="{ open: false }"
-            class="relative flex flex-col w-full pt-2 mx-auto bg-white md:items-center md:justify-between md:flex-row md:px-6">
-            <div class="flex flex-row items-center justify-between lg:justify-start">
-                <a href="/" class="lg:pr-8 text-black inline-flex items-center gap-3">
+            className="relative flex flex-col w-full pt-2 mx-auto bg-white md:items-center md:justify-between md:flex-row md:px-6">
+            <div className="flex flex-row items-center justify-between lg:justify-start">
+                <a href="/" className="lg:pr-8 text-black inline-flex items-center gap-3">
                 
-                <span class="font-bold text-2xl font-display">PicWish</span>
+                <span className="font-bold text-2xl font-display">PicWish</span>
                 </a>
 
                 <button
@@ -73,7 +73,7 @@ export default function Header(){
             
         </div>
         <div>
-            <hr class="w-full h-0.5 border-t-0 mt-2 bg-slate-50 opacity-200 dark:opacity-200" />
+            <hr className="w-full h-0.5 border-t-0 mt-2 bg-slate-50 opacity-200 dark:opacity-200" />
         </div>
         </div>
 
