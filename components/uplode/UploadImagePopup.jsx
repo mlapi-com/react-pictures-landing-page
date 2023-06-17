@@ -181,7 +181,7 @@ function App() {
       {!showDialog && selectedChoiceState && selectedChoice && (
         
         <div className='flex items-center justify-center flex-col' ref={selectedChoiceRef}>
-          <hr class="w-3/5 h-0.5 border-t-0 mt-14 bg-slate-400 opacity-200 dark:opacity-200" />
+          <hr className="w-3/5 h-0.5 border-t-0 mt-14 bg-slate-400 opacity-200 dark:opacity-200" />
         <div className="mx-auto flex w-3/5 flex-col items-center justify-center p-6 mt-4 text-slate-950 rounded-xl border-2 border-solid border-slate-900 bg-white">
           <h1 className="text-xl font-medium">{selectedChoice}</h1>
           <img src={image} className="w-3/5 h-auto mx-auto mt-10 max-w-full" />

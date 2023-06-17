@@ -4,6 +4,7 @@ import Hero from '@/components/sections/hero'
 import Header from '../components/navigation/header'
 import UploadImagePopup from '../components/uplode/UploadImagePopup'
 import Tools from '../components/sections/tools'
+import { BrowserRouter, Route, Router } from 'react-router-dom'
 
 export default function Home() {
   return (
